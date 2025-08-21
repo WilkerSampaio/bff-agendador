@@ -1,4 +1,4 @@
-package com.wilker.bff_agendador_tarefas.infrastructure.dtos;
+package com.wilker.bff_agendador_tarefas.infrastructure.dtos.in;
 
 import lombok.*;
 
@@ -8,9 +8,8 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 
-public class TelefoneDTO {
+public class TelefoneDTORequest {
 
-    private Long id;
     private String ddd;
     private String numero;
 
