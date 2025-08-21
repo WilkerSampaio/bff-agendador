@@ -1,0 +1,36 @@
+package com.wilker.bff_agendador_tarefas.infrastructure.client;
+
+import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TarefasDTOResponse;
+import com.wilker.bff_agendador_tarefas.infrastructure.dtos.in.TarefasDTORequest;
+import com.wilker.bff_agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@FeignClient(name = "tarefa", url = "${tarefa.url}")
+public interface TarefaClient {
+
+    @PostMapping
+    TarefasDTOResponse registraTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+                                      @RequestHeader("Authorization") String token);
+    @GetMapping("/eventos")
+    List<TarefasDTOResponse> buscaListaDeTarefaPorPeriodo(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataFinal, @RequestHeader("Authorization") String token);
+
+    @GetMapping
+    List<TarefasDTOResponse> buscaTarefaPorEmail(@RequestHeader ("Authorization") String token);
+
+    @DeleteMapping
+     void deletaTarefaPorId(@RequestParam ("id") String id, @RequestHeader("Authorization") String token);
+
+    @PatchMapping
+    TarefasDTOResponse alterarStatusTarefa(@RequestParam ("status") StatusNotificacaoEnum status,
+                                           @RequestParam ("id") String id, @RequestHeader("Authorization") String token);
+    @PutMapping
+    TarefasDTOResponse alterarDadosTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+                                          @RequestParam ("id") String id, @RequestHeader("Authorization") String token);
+}

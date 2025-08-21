@@ -1,4 +1,4 @@
-package com.wilker.bff_agendador_tarefas.infrastructure.dtos;
+package com.wilker.bff_agendador_tarefas.infrastructure.dtos.out;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenDTO {
+public class TokenDTOResponse {
     private String token;
 }

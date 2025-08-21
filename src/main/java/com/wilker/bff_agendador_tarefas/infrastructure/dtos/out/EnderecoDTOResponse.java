@@ -1,4 +1,4 @@
-package com.wilker.bff_agendador_tarefas.infrastructure.dtos;
+package com.wilker.bff_agendador_tarefas.infrastructure.dtos.out;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
-public class EnderecoDTO {
+public class EnderecoDTOResponse {
 
     private Long id;
     private String rua;
