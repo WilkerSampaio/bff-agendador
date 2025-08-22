@@ -16,12 +16,12 @@ public class UsuarioService {
 
     private final UsuarioClient usuarioClient;
 
-    public UsuarioDTOResponse salvarUsuario(UsuarioDTORequest UsuarioDTORequest){
-        return usuarioClient.registraUsuario(UsuarioDTORequest);
+    public UsuarioDTOResponse salvarUsuario(UsuarioDTORequest usuarioDTORequest){
+        return usuarioClient.registraUsuario(usuarioDTORequest);
     }
 
-    public TokenDTOResponse authenticarUsuario(LoginRequest LoginRequest){
-        return usuarioClient.authenticarUsuario(LoginRequest);
+    public TokenDTOResponse authenticarUsuario(LoginRequest loginRequest){
+        return usuarioClient.authenticarUsuario(loginRequest);
     }
 
     public UsuarioDTOResponse buscarUsuarioPeloEmail(String email, String token){
@@ -32,24 +32,24 @@ public class UsuarioService {
         usuarioClient.deletaUsuarioPeloEmail(email, token);
     }
 
-    public UsuarioDTOResponse atualizarDadosUsuario(UsuarioDTORequest UsuarioDTORequest, String token){
-        return usuarioClient.atualizarDadosUsuario(UsuarioDTORequest, token);
+    public UsuarioDTOResponse atualizarDadosUsuario(UsuarioDTORequest usuarioDTORequest, String token){
+        return usuarioClient.atualizarDadosUsuario(usuarioDTORequest, token);
     }
 
-    public EnderecoDTOResponse atualizarEndereco(EnderecoDTORequest EnderecoDTORequest, Long idEndereco, String token){
-        return usuarioClient.atualizarEndereco(EnderecoDTORequest, idEndereco, token);
+    public EnderecoDTOResponse atualizarEndereco(EnderecoDTORequest enderecoDTORequest, Long idEndereco, String token){
+        return usuarioClient.atualizarEndereco(enderecoDTORequest, idEndereco, token);
     }
 
-    public TelefoneDTOResponse atualizarTelefone(TelefoneDTORequest TelefoneDTORequest, Long idTelefone, String token){
-        return usuarioClient.atualizarTelefone(TelefoneDTORequest, idTelefone, token);
+    public TelefoneDTOResponse atualizarTelefone(TelefoneDTORequest telefoneDTORequest, Long idTelefone, String token){
+        return usuarioClient.atualizarTelefone(telefoneDTORequest, idTelefone, token);
 
     }
-    public EnderecoDTOResponse cadastrarEndereco(EnderecoDTORequest EnderecoDTORequest, String token){
-        return usuarioClient.cadastrarEndereco(EnderecoDTORequest, token);
+    public EnderecoDTOResponse cadastrarEndereco(EnderecoDTORequest enderecoDTORequest, String token){
+        return usuarioClient.cadastrarEndereco(enderecoDTORequest, token);
     }
 
-    public TelefoneDTOResponse cadastrarTelefone(TelefoneDTORequest TelefoneDTORequest, String token){
-        return usuarioClient.cadastrarTelefone(TelefoneDTORequest, token);
+    public TelefoneDTOResponse cadastrarTelefone(TelefoneDTORequest telefoneDTORequest, String token){
+        return usuarioClient.cadastrarTelefone(telefoneDTORequest, token);
     }
 
 

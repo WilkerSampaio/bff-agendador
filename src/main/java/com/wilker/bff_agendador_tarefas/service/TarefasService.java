@@ -17,8 +17,8 @@ public class TarefasService {
 
     private final TarefaClient tarefaClient;
 
-    public TarefasDTOResponse salvarTarefa(TarefasDTORequest TarefasDTORequest, String token){
-        return tarefaClient.registraTarefa(TarefasDTORequest, token);
+    public TarefasDTOResponse salvarTarefa(TarefasDTORequest tarefasDTORequest, String token){
+        return tarefaClient.registraTarefa(tarefasDTORequest, token);
 
     }
 
@@ -42,8 +42,8 @@ public class TarefasService {
 
     }
 
-    public TarefasDTOResponse alterarDadosTarefa(TarefasDTORequest TarefasDTORequest, String id, String token){
-        return  tarefaClient.alterarDadosTarefa(TarefasDTORequest, id, token);
+    public TarefasDTOResponse alterarDadosTarefa(TarefasDTORequest tarefasDTORequest, String id, String token){
+        return  tarefaClient.alterarDadosTarefa(tarefasDTORequest, id, token);
 
     }
 
