@@ -30,9 +30,9 @@ public class TarefasController {
     @Operation(summary = "Criar Tarefa de Usuário", description = "Cadastra uma nova tarefa")
     @ApiResponse(responseCode = "200", description = "Tarefa salva com sucesso")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<TarefasDTOResponse> registraTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+    public ResponseEntity<TarefasDTOResponse> registraTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                                              @RequestHeader (name = "Authorization", required = false) String token){
-        return ResponseEntity.ok(tarefasService.salvarTarefa(TarefasDTORequest, token));
+        return ResponseEntity.ok(tarefasService.salvarTarefa(tarefasDTORequest, token));
     }
 
     @GetMapping("/eventos")
@@ -83,12 +83,9 @@ public class TarefasController {
     @ApiResponse(responseCode = "200", description = "Tarefa alterada")
     @ApiResponse(responseCode = "404", description = "Tarefa não econtrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<TarefasDTOResponse> alterarDadosTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+    public ResponseEntity<TarefasDTOResponse> alterarDadosTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                                                  @RequestParam ("id") String id,
                                                                  @RequestHeader("Authorization") String token){
-        return ResponseEntity.ok(tarefasService.alterarDadosTarefa(TarefasDTORequest, id, token));
+        return ResponseEntity.ok(tarefasService.alterarDadosTarefa(tarefasDTORequest, id, token));
     }
-
-
-
 }

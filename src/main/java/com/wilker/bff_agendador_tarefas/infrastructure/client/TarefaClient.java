@@ -14,7 +14,7 @@ import java.util.List;
 public interface TarefaClient {
 
     @PostMapping
-    TarefasDTOResponse registraTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+    TarefasDTOResponse registraTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                       @RequestHeader("Authorization") String token);
     @GetMapping("/eventos")
     List<TarefasDTOResponse> buscaListaDeTarefaPorPeriodo(
@@ -31,6 +31,6 @@ public interface TarefaClient {
     TarefasDTOResponse alterarStatusTarefa(@RequestParam ("status") StatusNotificacaoEnum status,
                                            @RequestParam ("id") String id, @RequestHeader("Authorization") String token);
     @PutMapping
-    TarefasDTOResponse alterarDadosTarefa(@RequestBody TarefasDTORequest TarefasDTORequest,
+    TarefasDTOResponse alterarDadosTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                           @RequestParam ("id") String id, @RequestHeader("Authorization") String token);
 }
