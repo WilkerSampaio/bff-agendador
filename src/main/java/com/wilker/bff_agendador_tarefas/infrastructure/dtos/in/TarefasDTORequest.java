@@ -1,7 +1,6 @@
 package com.wilker.bff_agendador_tarefas.infrastructure.dtos.in;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wilker.bff_agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
 import lombok.*;
 
 import java.time.LocalDateTime;

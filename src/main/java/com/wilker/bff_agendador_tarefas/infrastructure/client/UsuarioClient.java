@@ -3,7 +3,6 @@ package com.wilker.bff_agendador_tarefas.infrastructure.client;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.in.*;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.EnderecoDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TelefoneDTOResponse;
-import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TokenDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.UsuarioDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ public interface UsuarioClient {
     UsuarioDTOResponse registraUsuario(@RequestBody UsuarioDTORequest usuarioDTORequest);
 
     @PostMapping("/login")
-    TokenDTOResponse authenticarUsuario(@RequestBody LoginRequest loginRequest);
+    String authenticarUsuario(@RequestBody LoginRequestDTO loginRequestDTO);
 
     @GetMapping
     UsuarioDTOResponse buscarUsuarioPeloEmail(@RequestParam("email") String email,

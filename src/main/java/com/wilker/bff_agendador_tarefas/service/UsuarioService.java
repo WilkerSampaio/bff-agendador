@@ -3,7 +3,6 @@ package com.wilker.bff_agendador_tarefas.service;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.in.*;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.EnderecoDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TelefoneDTOResponse;
-import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TokenDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.UsuarioDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.client.UsuarioClient;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +19,8 @@ public class UsuarioService {
         return usuarioClient.registraUsuario(usuarioDTORequest);
     }
 
-    public TokenDTOResponse authenticarUsuario(LoginRequest loginRequest){
-        return usuarioClient.authenticarUsuario(loginRequest);
+    public String authenticarUsuario(LoginRequestDTO loginRequestDTO){
+        return usuarioClient.authenticarUsuario(loginRequestDTO);
     }
 
     public UsuarioDTOResponse buscarUsuarioPeloEmail(String email, String token){

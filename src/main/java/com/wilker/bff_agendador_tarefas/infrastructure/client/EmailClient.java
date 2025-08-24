@@ -2,9 +2,11 @@ package com.wilker.bff_agendador_tarefas.infrastructure.client;
 
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TarefasDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = "notificacao", url ="${notificao.url}")
+@FeignClient(name = "notificacao", url ="${notificacao.url}")
 public interface EmailClient {
 
-    public void enviarEmail(TarefasDTOResponse tarefasDTOResponse);
+    @PostMapping
+     void enviarEmail(TarefasDTOResponse tarefasDTOResponse);
 }
