@@ -52,7 +52,7 @@ public class TarefasController {
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas")
     @ApiResponse(responseCode = "404", description = "Tarefas não econtradas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<List<TarefasDTOResponse>> buscaTarefaPorEmail(@RequestHeader (name = "Authorization", required = false) String token){
+    public ResponseEntity<List<TarefasDTOResponse>> buscaTarefaPorEmail(@RequestHeader (name = "Authorization", required = false)String token){
         return ResponseEntity.ok(tarefasService.buscarTarefaPorEmail(token));
     }
 

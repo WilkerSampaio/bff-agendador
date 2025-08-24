@@ -4,7 +4,6 @@ package com.wilker.bff_agendador_tarefas.controller;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.in.*;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.EnderecoDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TelefoneDTOResponse;
-import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.TokenDTOResponse;
 import com.wilker.bff_agendador_tarefas.infrastructure.dtos.out.UsuarioDTOResponse;
 import com.wilker.bff_agendador_tarefas.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,11 +11,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/usuario")
-@Controller
+@RestController
 @RequiredArgsConstructor
 @Tag(name = "Usuário", description = "Cadastro e Login de Usuários")
 public class UsuarioController {
@@ -37,9 +35,10 @@ public class UsuarioController {
     @ApiResponse(responseCode = "200", description = "Usuário logado")
     @ApiResponse(responseCode =  "401", description = "Credencias inválidas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<TokenDTOResponse> authenticarUsuario(@RequestBody LoginRequest loginRequest){
-        return ResponseEntity.ok(usuarioService.authenticarUsuario(loginRequest));
+    public String authenticarUsuario(@RequestBody LoginRequestDTO loginRequestDTO){
+        return usuarioService.authenticarUsuario(loginRequestDTO);
     }
+
     @GetMapping
     @Operation(summary = "Buscar Dados do Usuário", description = "Buscar dados do usuário por email ")
     @ApiResponse(responseCode = "200", description = "Usuário econtrado")

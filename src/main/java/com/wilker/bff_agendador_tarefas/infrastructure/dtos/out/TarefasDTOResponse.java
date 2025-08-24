@@ -24,4 +24,17 @@ public class TarefasDTOResponse {
     private LocalDateTime dataAlteracao;
     private StatusNotificacaoEnum statusNotificacaoEnum;
 
+    @Override
+    public String toString() {
+        return "TarefasDTOResponse{" +
+                "id='" + id + '\'' +
+                ", nomeTarefa='" + nomeTarefa + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", dataCriacao=" + dataCriacao +
+                ", dataEvento=" + dataEvento +
+                ", emailUsuario='" + emailUsuario + '\'' +
+                ", dataAlteracao=" + dataAlteracao +
+                ", statusNotificacaoEnum=" + statusNotificacaoEnum +
+                '}';
+    }
 }

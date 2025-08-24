@@ -23,7 +23,7 @@ public class TarefasService {
     }
 
     public List<TarefasDTOResponse> buscaListaDeTarefaPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal, String token){
-     return tarefaClient.buscaListaDeTarefaPorPeriodo(dataInicial, dataFinal, token);
+        return tarefaClient.buscaListaDeTarefaPorPeriodo(dataInicial, dataFinal, token);
 
     }
 
