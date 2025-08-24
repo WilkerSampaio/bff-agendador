@@ -30,6 +30,8 @@ public class TarefasController {
     @Operation(summary = "Criar Tarefa de Usuário", description = "Cadastra uma nova tarefa")
     @ApiResponse(responseCode = "200", description = "Tarefa salva com sucesso")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
+    @ApiResponse(responseCode =  "409", description = "Tarefa já cadastrada")
     public ResponseEntity<TarefasDTOResponse> registraTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                                              @RequestHeader (name = "Authorization", required = false) String token){
         return ResponseEntity.ok(tarefasService.salvarTarefa(tarefasDTORequest, token));
@@ -38,8 +40,9 @@ public class TarefasController {
     @GetMapping("/eventos")
     @Operation(summary = "Busca Lista de Tarefas por Periodo", description = "Busca tarefas cadastradas por periodo")
     @ApiResponse(responseCode = "200", description = "Tarefas encontrada")
-    @ApiResponse(responseCode = "404", description = "Tarefas não econtrada")
+    @ApiResponse(responseCode = "404", description = "Tarefas não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
     public ResponseEntity<List<TarefasDTOResponse>> buscaListaDeTarefaPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataFinal,
@@ -50,8 +53,9 @@ public class TarefasController {
     @GetMapping
     @Operation(summary = "Busca Lista de Tarefas por Email do Usuário", description = "Busca tarefas pelo email")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas")
-    @ApiResponse(responseCode = "404", description = "Tarefas não econtradas")
+    @ApiResponse(responseCode = "404", description = "Tarefas não encontradas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
     public ResponseEntity<List<TarefasDTOResponse>> buscaTarefaPorEmail(@RequestHeader (name = "Authorization", required = false)String token){
         return ResponseEntity.ok(tarefasService.buscarTarefaPorEmail(token));
     }
@@ -59,8 +63,9 @@ public class TarefasController {
     @DeleteMapping
     @Operation(summary = "Deleta Tarefa por ID", description = "Deleta tarefa cadastrada pelo ID")
     @ApiResponse(responseCode = "200", description = "Tarefa deletada com sucesso")
-    @ApiResponse(responseCode =  "404", description = "Tarefa não econtrada")
+    @ApiResponse(responseCode =  "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
     public ResponseEntity<Void> deletaTarefaPorId(@RequestParam ("id") String id,
                                                   @RequestHeader("Authorization") String token){
            tarefasService.deletaTarefaPorId(id, token);
@@ -70,8 +75,9 @@ public class TarefasController {
     @PatchMapping
     @Operation(summary = "Altera Status da Tarefa", description = "Altera status da tarefa cadastrada")
     @ApiResponse(responseCode = "200", description = "Tarefa alterada")
-    @ApiResponse(responseCode = "404", description = "Tarefa não econtrada")
+    @ApiResponse(responseCode = "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
     public ResponseEntity<TarefasDTOResponse> alterarStatusTarefa(@RequestParam ("status") StatusNotificacaoEnum status,
                                                                   @RequestParam ("id") String id,
                                                                   @RequestHeader("Authorization") String token){
@@ -81,8 +87,9 @@ public class TarefasController {
     @PutMapping
     @Operation(summary = "Altera Dados da Tarefa", description = "Altera dados da tarefa cadastrada")
     @ApiResponse(responseCode = "200", description = "Tarefa alterada")
-    @ApiResponse(responseCode = "404", description = "Tarefa não econtrada")
+    @ApiResponse(responseCode = "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não autenticado")
     public ResponseEntity<TarefasDTOResponse> alterarDadosTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
                                                                  @RequestParam ("id") String id,
                                                                  @RequestHeader("Authorization") String token){
